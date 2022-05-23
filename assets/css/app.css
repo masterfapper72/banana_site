@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+}
+body {
+  background-image: url("/assets/img/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.logo-container {
+  position: absolute;
+  left: 5%;
+  top: 2%;
+  cursor: pointer;
+}
+.logo-container img {
+  width: 5em;
+}
+.menu {
+  position: absolute;
+  right: 5%;
+  top: 2%;
+}
+.menu-item {
+  float: right;
+  margin-left: 1em;
+  font-size: 2em;
+  cursor: pointer;
+}
+.login {
+  padding: 0.1em 0.3em 0.1em 0.3em;
+  background-color: gold;
+}
+.login:hover {
+  color: black !important;
+  opacity: 80%;
+}
+.login-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.login-popup {
+  display: none;
+  position: absolute;
+  top: 35%;
+  width: 30%;
+  left: 32%;
+  text-align: center;
+  font-size: 2em;
+  background-color: wheat;
+  border: 5px solid black;
+  padding: 2em 1em 2em 1em;
+  z-index: 10;
+}
+.login-input {
+  width: 40%;
+  height: 2em;
+  border: 3px solid black;
+  font-size: 0.5em;
+}
+.login-btn {
+  padding: 0.5em 2em 0.5em 2em;
+  background-color: goldenrod;
+  margin-top: 3em;
+}
+.signup-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.signup-popup {
+  display: none;
+  position: absolute;
+  top: 30%;
+  width: 30%;
+  left: 32%;
+  text-align: center;
+  font-size: 2em;
+  background-color: wheat;
+  border: 5px solid black;
+  padding: 2em 1em 2em 1em;
+  z-index: 10;
+}
+.signup-btn {
+  padding: 0.5em 2em 0.5em 2em;
+  background-color: goldenrod;
+  margin-top: 3em;
+  font-size: 0.5em;
+}
+.color-white {
+  color: white;
+}
+.color-back {
+  color: black;
+}
+.menu-item:hover {
+  color: gold;
+}
+.page-container {
+  position: absolute;
+  width: 100%;
+  color: wheat;
+  top: 40%;
+  text-align: center;
+  font-size: 3em;
+}
+.success-container {
+  position: absolute;
+  width: 50%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: wheat;
+  top: 35%;
+  left: 24%;
+  text-align: center;
+  font-size: 2em;
+  background-color: brown;
+  border: 5px solid wheat;
+}
+.main-page-button {
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: gold;
+  margin-top: 60px;
+  cursor: pointer;
+  font-size: 0.5em;
+}
+.main-page-button:hover {
+  opacity: 80%;
+}
+a {
+  text-decoration: none;
+}
+.error-box {
+  position: absolute;
+  width: 30%;
+  left: 30%;
+  top: 25%;
+  background-color: red;
+  color: white;
+  padding: 1em 2em 1em 2em;
+  text-align: center;
+  border: 2px solid yellow;
+  font-size: 2em;
+  font-weight: bold;
+}
+.error-box img {
+  position: absolute;
+  width: 4%;
+  right: 1%;
+  top: 5%;
+  cursor: pointer;
+}
+
+/* About us */
+.who-text {
+  color: wheat;
+  font-size: 2em;
+}
+.desc-container {
+  position: absolute;
+  width: 30%;
+  color: wheat;
+  top: 30%;
+  left: 6%;
+  float: left;
+}
+.who-img {
+  position: absolute;
+  float: left;
+  width: 12em;
+  top: 35%;
+  left: 55%;
+}
+
+/* Contact */
+.contacts-container {
+  position: absolute;
+  width: 100%;
+  color: wheat;
+  top: 30%;
+  text-align: center;
+  font-size: 2em;
+}
+.contact-text {
+  width: 30%;
+  height: 8em;
+}
+.email-inpt {
+  width: 20%;
+}
+.contact-form-btn {
+  padding: 1em 2em 1em 2em;
+  background-color: gold;
+}
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 2%;
+  right: 2%;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: right;
+}
