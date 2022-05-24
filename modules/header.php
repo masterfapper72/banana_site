@@ -33,7 +33,7 @@
           } ?>
       <?php
         if (isset($_SESSION["username"])) {
-          ?> <a class="menu-item color-white" href="contact.php" title="contacts"
+          ?> <a class="menu-item color-white" href="profile.php" title="profile"
           ><p>Profile</p></a>
           <?php
         } ?>
