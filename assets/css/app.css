@@ -1,10 +1,11 @@
 * {
   margin: 0;
 }
+html {
+  height: 100%;
+}
 body {
-  background-image: url("/assets/img/background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(brown, gold);
 }
 .logo-container {
   position: absolute;
@@ -242,6 +243,10 @@ a {
 }
 .profile-main-info p {
   font-size: 1.6em;
+}
+.profile-picture:hover {
+  opacity: 80%;
+  cursor: pointer;
 }
 .profile-bio {
   position: relative;

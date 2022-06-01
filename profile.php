@@ -2,7 +2,10 @@
 
 <div class="profile-container">
     <div class="profile-main-info">
-        <img src="assets/img/avatar.png" alt="profile avatar picture">
+        <form id="imgUpload" action="includes/profile_change.inc.php" method="POST" enctype="multipart/form-data">
+            <img class="profile-picture" src="assets/img/avatar.png" alt="profile avatar picture" onclick="changeProfileImg()">
+            <input id="change_img" style="display: none;" type="file" name="profpic" onchange="submitImg()">
+        </form>
         <p><?php echo $_SESSION["username"]; ?></p>
     </div>
     <img class="banner-picture" src="assets/img/stock_banner.png" alt="profile banner picture">

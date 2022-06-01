@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
             session_start();
             $_SESSION["userid"] = $tableData["usersId"];
             $_SESSION["username"] = $tableData["usersUid"];
-            header("location: ../index.php");
+            header("location: ../profile.php");
         } else {
             header("location: ../index.php?error=wrong_password ");
         }
