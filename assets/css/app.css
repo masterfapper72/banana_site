@@ -234,15 +234,19 @@ a {
 .profile-main-info {
   position: absolute;
   top: 15%;
-  left: -18%;
+  left: 5%;
   text-align: center;
   z-index: 11;
 }
 .profile-main-info img {
-  width: 20%;
+  width: 200px;
+  border-radius: 50%;
 }
 .profile-main-info p {
   font-size: 1.6em;
+}
+.profile-picture img {
+  width: 20%;
 }
 .profile-picture:hover {
   opacity: 80%;

@@ -47,7 +47,7 @@ function existingUsername($conn, $user) {
 }
 
 function createUser($conn, $name, $email, $username, $password) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, profileImg) VALUES (?, ?, ?, ?, 1);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../index.php?error=stmt_failed");
@@ -59,4 +59,32 @@ function createUser($conn, $name, $email, $username, $password) {
     mysqli_stmt_close($stmt);
     header("location: ../success.php");
     exit();
+}
+
+function checkProfileImg($conn) {
+    $sql = "SELECT * FROM users";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        if ($row["profileImg"] == 1) {
+            mysqli_close($conn);
+            return true;
+        } else {
+            mysqli_close($conn);
+            return false;
+        }
+    }
+}
+
+function saveUserExt($conn, $ext, $user) {
+    $sql = "UPDATE users SET ext='" . $ext . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+    mysqli_close($conn);
+}
+
+function getExt($conn, $user) {
+    $sql = "SELECT * FROM users WHERE usersUid='" . $user . "'";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        return $row["ext"];
+    }
 }

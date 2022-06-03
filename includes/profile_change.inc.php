@@ -1,5 +1,8 @@
 <?php
 
+require_once "functions.inc.php";
+require_once "db_connect.inc.php";
+
 session_start();
 
 $file = $_FILES["profpic"];
@@ -18,6 +21,7 @@ $allowedExt = array("jpg", "jpeg", "png", "gif");
 if (in_array($fileRealExt, $allowedExt)) {
     if ($fileError == 0) {
         if ($fileSize < 1000000) {
+            saveUserExt($conn, $fileRealExt, $_SESSION["username"]);
             $newFileName = $_SESSION["username"] . "_profile" . "." . $fileRealExt;
             $fileDestinationPath = "../assets/uploads/" . $newFileName;
             move_uploaded_file($fileTempName, $fileDestinationPath);

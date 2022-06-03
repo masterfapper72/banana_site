@@ -1,9 +1,17 @@
+<?php require_once "includes/functions.inc.php"; ?>
+<?php require_once "includes/db_connect.inc.php"; ?>
 <?php include_once "modules/header.php"; ?>
+<?php $userProfileExt = getExt($conn, $_SESSION["username"]) ?>
 
 <div class="profile-container">
     <div class="profile-main-info">
         <form id="imgUpload" action="includes/profile_change.inc.php" method="POST" enctype="multipart/form-data">
+            <?php if (checkProfileImg($conn)) { ?>
             <img class="profile-picture" src="assets/img/avatar.png" alt="profile avatar picture" onclick="changeProfileImg()">
+            <?php } else { ?>
+            <img class="profile-picture" src="<?php echo "assets/uploads/" . $_SESSION["username"] . "_profile". "." . $userProfileExt; ?>"
+                alt="profile avatar picture" onclick="changeProfileImg()">
+            <?php } ?>
             <input id="change_img" style="display: none;" type="file" name="profpic" onchange="submitImg()">
         </form>
         <p><?php echo $_SESSION["username"]; ?></p>
