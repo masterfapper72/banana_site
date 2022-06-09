@@ -47,7 +47,7 @@ function existingUsername($conn, $user) {
 }
 
 function createUser($conn, $name, $email, $username, $password) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, profileImg) VALUES (?, ?, ?, ?, 1);";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, profileImg, bannerImg) VALUES (?, ?, ?, ?, 1, 1);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../index.php?error=stmt_failed");
@@ -75,10 +75,40 @@ function checkProfileImg($conn) {
     }
 }
 
+function updateProfileImgStatus($conn, $user) {
+    $sql = "UPDATE users SET profileImg='" . 0 . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+    mysqli_close($conn);
+}
+
+function updateProfileBannerStatus($conn, $user) {
+    $sql = "UPDATE users SET bannerImg='" . 0 . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+    mysqli_close($conn);
+}
+
+function checkBannerImg($conn) {
+    $sql = "SELECT * FROM users";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        if ($row["bannerImg"] == 1) {
+            mysqli_close($conn);
+            return true;
+        } else {
+            mysqli_close($conn);
+            return false;
+        }
+    }
+}
+
 function saveUserExt($conn, $ext, $user) {
     $sql = "UPDATE users SET ext='" . $ext . "' WHERE usersUid='" . $user . "';";
     mysqli_query($conn, $sql);
-    mysqli_close($conn);
+}
+
+function saveUserBannerExt($conn, $ext, $user) {
+    $sql = "UPDATE users SET bannerExt='" . $ext . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
 }
 
 function getExt($conn, $user) {

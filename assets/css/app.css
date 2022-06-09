@@ -274,4 +274,54 @@ a {
   right: 1%;
   font-size: 1.5em;
   background-color: goldenrod;
+  cursor: pointer;
+}
+.profile-edit {
+  display: none;
+  position: absolute;
+  width: 40%;
+  height: 60%;
+  top: 10%;
+  left: 27%;
+  background-color: gold;
+  border: 5px solid goldenrod;
+  z-index: 12;
+}
+.settings-close {
+  width: 5%;
+  float: right;
+  margin-right: 1%;
+  margin-top: 1%;
+  cursor: pointer;
+}
+.settings {
+  position: relative;
+  top: 15%;
+}
+h2.sett-1 {
+  margin-bottom: 2%;
+  margin-left: 35%;
+}
+.banner-upload {
+  margin-left: 17%;
+}
+.banner-btn-1 {
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.banner-btn-2 {
+  width: 20%;
+  height: 2.5em;
+  margin-left: 5%;
+  background-color: goldenrod;
+  cursor: pointer;
+  border: 1px solid #999;
+  font-weight: 700;
+  font-size: 10pt;
 }

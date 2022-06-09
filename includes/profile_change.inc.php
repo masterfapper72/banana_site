@@ -25,6 +25,7 @@ if (in_array($fileRealExt, $allowedExt)) {
             $newFileName = $_SESSION["username"] . "_profile" . "." . $fileRealExt;
             $fileDestinationPath = "../assets/uploads/" . $newFileName;
             move_uploaded_file($fileTempName, $fileDestinationPath);
+            updateProfileImgStatus($conn, $_SESSION["username"]);
             header("location: ../profile.php?upload_success");
         } else {
             header("location: ../index.php?error=file_too_large");
