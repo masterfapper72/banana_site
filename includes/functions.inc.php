@@ -66,10 +66,8 @@ function checkProfileImg($conn) {
     $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($query)) {
         if ($row["profileImg"] == 1) {
-            mysqli_close($conn);
             return true;
         } else {
-            mysqli_close($conn);
             return false;
         }
     }
@@ -116,5 +114,13 @@ function getExt($conn, $user) {
     $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($query)) {
         return $row["ext"];
+    }
+}
+
+function getBannerExt($conn, $user) {
+    $sql = "SELECT * FROM users WHERE usersUid='" . $user . "'";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        return $row["bannerExt"];
     }
 }

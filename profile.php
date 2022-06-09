@@ -2,6 +2,7 @@
 <?php require_once "includes/db_connect.inc.php"; ?>
 <?php include_once "modules/header.php"; ?>
 <?php $userProfileExt = getExt($conn, $_SESSION["username"]) ?>
+<?php $userBannerExt = getBannerExt($conn, $_SESSION["username"]) ?>
 
 <div class="profile-container">
     <div class="profile-main-info">
@@ -16,7 +17,12 @@
         </form>
         <p><?php echo $_SESSION["username"]; ?></p>
     </div>
-    <img class="banner-picture" src="assets/img/stock_banner.png" alt="profile banner picture">
+    <?php if (checkBannerImg($conn)) { ?>
+        <img class="banner-picture" src="assets/img/stock_banner.png" alt="profile banner picture">
+    <?php } else { ?>
+        <img class="banner-picture" src="<?php echo "assets/uploads/" . $_SESSION["username"] . "_banner". "." . $userBannerExt; ?>"
+            alt="profile banner picture">
+        <?php } ?>
     <div class="profile-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

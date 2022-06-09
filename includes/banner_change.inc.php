@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
 
     if (in_array($bannerRealExt, $allowedBannerExt)) {
         if ($bannerError == 0) {
-            if ($bannerSize < 1000000) {
+            if ($bannerSize < 10000000) {
                 saveUserBannerExt($conn, $bannerRealExt, $_SESSION["username"]);
                 $newBannerName = $_SESSION["username"] . "_banner" . "." . $bannerRealExt;
                 $bannerDestination = "../assets/uploads/" . $newBannerName;
