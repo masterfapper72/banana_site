@@ -12,7 +12,6 @@ if (isset($_POST["submit"])) {
     $bannerTempName = $_FILES["banner_file"]["tmp_name"];
     $bannerSize = $_FILES["banner_file"]["size"];
     $bannerError = $_FILES["banner_file"]["error"];
-    $bannerType = $_FILES["banner_file"]["type"];
 
     $bannerExt = explode(".", $bannerName);
     $bannerRealExt = strtolower(end($bannerExt));

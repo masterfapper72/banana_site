@@ -1,8 +1,9 @@
 <?php require_once "includes/functions.inc.php"; ?>
 <?php require_once "includes/db_connect.inc.php"; ?>
 <?php include_once "modules/header.php"; ?>
-<?php $userProfileExt = getExt($conn, $_SESSION["username"]) ?>
-<?php $userBannerExt = getBannerExt($conn, $_SESSION["username"]) ?>
+<?php $userProfileExt = getExt($conn, $_SESSION["username"]); ?>
+<?php $userBannerExt = getBannerExt($conn, $_SESSION["username"]); ?>
+<?php $userBirth = getBirthDate($conn, $_SESSION["username"]); ?>
 
 <div class="profile-container">
     <div class="profile-main-info">
@@ -29,7 +30,11 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
     <div class="profile-birth"><b>Birth Date:</b>
-    DD/MM/YY
+        <?php
+            if (!checkBirthDate($conn, $_SESSION["username"])) { ?>
+                DD-MM-YY <?php } else {
+                    echo $userBirth; 
+                    } ?>
     </div>
     <button class="edit-profile-btn" type="button" onclick="openProfileSettings()">Edit Profile</button>
     <div id="p_settings" class="profile-edit">
@@ -39,6 +44,13 @@
             <form class="banner-upload" action="includes/banner_change.inc.php" method="POST" enctype="multipart/form-data">
                 <input class="banner-btn-1" type="file" name="banner_file">
                 <button class="banner-btn-2" type="submit" name="submit">Upload</button>
+            </form>
+            <br>
+            <hr>
+            <h2 class="sett-2">Edit Birth Date</h2>
+            <form class="birth-date" action="includes/birth_change.inc.php" method="POST">
+                <input class="birth-btn-1" type="date" name="date">
+                <button class="birth-btn-2" type="submit" name="submit">Change</button>
             </form>
             <br>
             <hr>

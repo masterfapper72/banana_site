@@ -11,7 +11,6 @@ $fileName = $_FILES["profpic"]["name"];
 $fileTempName = $_FILES["profpic"]["tmp_name"];
 $fileSize = $_FILES["profpic"]["size"];
 $fileError = $_FILES["profpic"]["error"];
-$fileType = $_FILES["profpic"]["type"];
 
 $fileExt = explode(".", $fileName);
 $fileRealExt = strtolower(end($fileExt));

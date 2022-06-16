@@ -1,5 +1,6 @@
 <?php
 
+//Error functions
 function emptyInputSignup($name, $email, $username, $password) {
     if (empty($name) || empty($email) || empty($username) || empty($password)) {
         $result = true;
@@ -46,8 +47,9 @@ function existingUsername($conn, $user) {
     mysqli_stmt_close($stmt);
 }
 
+//Create user on signup
 function createUser($conn, $name, $email, $username, $password) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, profileImg, bannerImg) VALUES (?, ?, ?, ?, 1, 1);";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, profileImg, bannerImg, birthDate) VALUES (?, ?, ?, ?, 1, 1, 1);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../index.php?error=stmt_failed");
@@ -61,6 +63,7 @@ function createUser($conn, $name, $email, $username, $password) {
     exit();
 }
 
+//Check if user already chnaged the default profile image
 function checkProfileImg($conn) {
     $sql = "SELECT * FROM users";
     $query = mysqli_query($conn, $sql);
@@ -73,42 +76,44 @@ function checkProfileImg($conn) {
     }
 }
 
-function updateProfileImgStatus($conn, $user) {
-    $sql = "UPDATE users SET profileImg='" . 0 . "' WHERE usersUid='" . $user . "';";
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
-}
-
-function updateProfileBannerStatus($conn, $user) {
-    $sql = "UPDATE users SET bannerImg='" . 0 . "' WHERE usersUid='" . $user . "';";
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
-}
-
+//Check if user already chnaged the default banner image
 function checkBannerImg($conn) {
     $sql = "SELECT * FROM users";
     $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($query)) {
         if ($row["bannerImg"] == 1) {
-            mysqli_close($conn);
             return true;
         } else {
-            mysqli_close($conn);
             return false;
         }
     }
 }
 
+//On user profile img upload change value in db
+function updateProfileImgStatus($conn, $user) {
+    $sql = "UPDATE users SET profileImg='" . 0 . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+}
+
+//On user banner img upload change value in db
+function updateProfileBannerStatus($conn, $user) {
+    $sql = "UPDATE users SET bannerImg='" . 0 . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+}
+
+//Save user profile img extension on db
 function saveUserExt($conn, $ext, $user) {
     $sql = "UPDATE users SET ext='" . $ext . "' WHERE usersUid='" . $user . "';";
     mysqli_query($conn, $sql);
 }
 
+//Save user banner img extension on db
 function saveUserBannerExt($conn, $ext, $user) {
     $sql = "UPDATE users SET bannerExt='" . $ext . "' WHERE usersUid='" . $user . "';";
     mysqli_query($conn, $sql);
 }
 
+//Get user profile img ext from db
 function getExt($conn, $user) {
     $sql = "SELECT * FROM users WHERE usersUid='" . $user . "'";
     $query = mysqli_query($conn, $sql);
@@ -117,10 +122,41 @@ function getExt($conn, $user) {
     }
 }
 
+//Get user banner img ext from db
 function getBannerExt($conn, $user) {
     $sql = "SELECT * FROM users WHERE usersUid='" . $user . "'";
     $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($query)) {
         return $row["bannerExt"];
     }
+}
+
+//Edit birth date DB entry
+function editBirth($conn, $date, $user) {
+    $sql = "UPDATE users SET birthDate='" . $date . "' WHERE usersUid='" . $user . "';";
+    mysqli_query($conn, $sql);
+}
+
+//Check user birth date
+function checkBirthDate($conn, $user) {
+    $sql = "SELECT * FROM users WHERE usersUid='" . $user . "';";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        $result = $row["birthDate"];
+    }
+    if ($result != 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//Get user birth date
+function getBirthDate($conn, $user) {
+    $sql = "SELECT * FROM users WHERE usersUid='" . $user . "';";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        $result = $row["birthDate"];
+    }
+    return $result;
 }
