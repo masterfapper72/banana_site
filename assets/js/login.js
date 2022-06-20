@@ -3,6 +3,8 @@ var lpopup = document.getElementById("login-popup");
 var sbg =  document.getElementById("signup-bg");
 var spopup = document.getElementById("signup-popup");
 var settpopup = document.getElementById("p_settings");
+var editPop = document.getElementById("ed_pop");
+var editPop2 = document.getElementById("ed_pop_2");
 
 function openLogin() {
     lbg.style.display = "block";
@@ -30,4 +32,14 @@ function openProfileSettings() {
 
 function closeProfileSettings() {
     settpopup.style.display = "none";
+}
+
+function editPopup() {
+    editPop.style.display = "block";
+    editPop2.style.display = "block";
+}
+
+function closeEditPopup() {
+    editPop.style.display = "none";
+    editPop2.style.display = "none";
 }

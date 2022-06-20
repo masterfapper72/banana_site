@@ -160,3 +160,48 @@ function getBirthDate($conn, $user) {
     }
     return $result;
 }
+
+//Create users bio table
+function createBioTable($conn, $user) {
+    $sql1 = "CREATE TABLE IF NOT EXISTS usersBio (usersUid VARCHAR(128) NOT null, bio VARCHAR(256) NOT null);";
+    $sql2 = "INSERT INTO usersBio (usersUid, bio) VALUES (?, 0);";
+    $sql3 = "SELECT * FROM usersBio WHERE usersUid = '" . $user . "';";
+    mysqli_query($conn, $sql1); // create bio table
+    $checkUserQuery = mysqli_query($conn, $sql3); //check for username duplicate
+    if (!mysqli_fetch_assoc($checkUserQuery)) {
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql2)) {
+            header("location: ../profile.php?error=stmt_failed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "s", $user);
+        mysqli_stmt_execute($stmt); //bind username to new created table
+        mysqli_stmt_close($stmt);
+    }
+}
+
+//Update DB with new user bio
+function updateBio($conn, $bio, $user) {
+    $sql = "UPDATE usersBio SET bio = '" . $bio . "' WHERE usersUid = '" . $user . "';";
+    mysqli_query($conn, $sql);
+}
+
+//Get users bio
+function getBio($conn, $user) {
+    $sql = "SELECT bio FROM usersBio WHERE usersUid = '" . $user . "';";
+    $bioQuery = mysqli_query($conn, $sql);
+    $fetchData = mysqli_fetch_assoc($bioQuery);
+    return $fetchData["bio"];
+}
+
+//Check bio status
+function bioStatus($conn, $user) {
+    $sql = "SELECT bio FROM usersBio WHERE usersUid = '" . $user . "';";
+    $bioQuery = mysqli_query($conn, $sql);
+    $fetchData = mysqli_fetch_assoc($bioQuery);
+    if ($fetchData["bio"] != 0) {
+        return true;
+    } else {
+        return false;
+    }
+}

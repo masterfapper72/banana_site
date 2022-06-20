@@ -257,8 +257,10 @@ a {
   width: 50%;
   top: 10%;
   left: 3%;
-  font-size: 1.5em;
+  font-size: 1.6em;
   float: left;
+  font-weight: 600;
+  text-shadow: 0.3px 00 white;
 }
 .profile-birth {
   position: relative;
@@ -307,6 +309,11 @@ h2.sett-2 {
   margin-bottom: 2%;
   margin-left: 38%;
 }
+h2.sett-3 {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 43%;
+}
 .banner-upload {
   margin-left: 17%;
 }
@@ -347,6 +354,57 @@ h2.sett-2 {
   width: 20%;
   height: 2em;
   margin-left: 5%;
+  background-color: goldenrod;
+  cursor: pointer;
+  border: 1px solid #999;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.bio-edit-btn {
+  width: 15%;
+  height: 2.2em;
+  margin-top: 1%;
+  margin-left: 42%;
+  background-color: goldenrod;
+  cursor: pointer;
+  border: 1px solid #999;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.bio-sett-pop-bg {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 15;
+}
+.bio-sett-pop {
+  display: none;
+  position: absolute;
+  top: 35%;
+  left: 24%;
+  background-color: gold;
+  width: 50%;
+  height: 23em;
+  border: 5px solid goldenrod;
+  text-align: center;
+  z-index: 16;
+}
+.edit-pop-form {
+  margin-top: 2%;
+}
+.edit-pop-txt {
+  position: relative;
+  width: 70%;
+  height: 17em;
+  font-weight: 500;
+  font-size: 12pt;
+}
+.edit-pop-txt-btn {
+  margin-top: 2%;
+  width: 10%;
+  height: 2.2em;
   background-color: goldenrod;
   cursor: pointer;
   border: 1px solid #999;

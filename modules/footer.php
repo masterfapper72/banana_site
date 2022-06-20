@@ -13,7 +13,5 @@
 
 <script src="assets/js/login.js"></script>
 
-<?php mysqli_close($conn); ?>
-
 </body>
 </html>

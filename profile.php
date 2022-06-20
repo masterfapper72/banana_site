@@ -24,11 +24,17 @@
         <img class="banner-picture" src="<?php echo "assets/uploads/" . $_SESSION["username"] . "_banner". "." . $userBannerExt; ?>"
             alt="profile banner picture">
         <?php } ?>
-    <div class="profile-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    <div class="profile-bio">
+        <?php if (!bioStatus($conn, $_SESSION["username"])) { ?>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <?php } else {
+                echo getBio($conn, $_SESSION["username"]);
+                        } ?>
+    </div>
     <div class="profile-birth"><b>Birth Date:</b>
         <?php
             if (!checkBirthDate($conn, $_SESSION["username"])) { ?>
@@ -54,8 +60,19 @@
             </form>
             <br>
             <hr>
+            <h2 class="sett-3">Edit Bio</h2>
+            <button class="bio-edit-btn" onclick="editPopup()">Edit</button>
         </div>
     </div>
 </div>
+<div id="ed_pop" class="bio-sett-pop-bg" onclick="closeEditPopup()"></div>
+<div id="ed_pop_2" class="bio-sett-pop">
+    <form class="edit-pop-form" action="includes/bio_update.inc.php" method="POST">
+        <textarea class="edit-pop-txt" name="bio-txt"></textarea>
+        <br>
+        <button class="edit-pop-txt-btn" type="submit" name="submit">Submit</button>
+    </form>
+</div>
 
+<?php mysqli_close($conn); ?>
 <?php include_once "modules/footer.php"; ?>
