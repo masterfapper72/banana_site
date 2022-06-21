@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
                 $bannerDestination = "../assets/uploads/" . $newBannerName;
                 move_uploaded_file($bannerTempName, $bannerDestination);
                 updateProfileBannerStatus($conn, $_SESSION["username"]);
-                header("location: ../profile.php?upload_success");
+                header("location: ../profile.php");
             } else {
                 header("location: ../profile.php?error=file_too_large");
             }

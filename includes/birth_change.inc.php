@@ -10,7 +10,7 @@ $dateValue = $_POST["date"];
 if (isset($_POST["submit"])) {
     if (!empty($dateValue)) {
         editBirth($conn, $dateValue, $_SESSION["username"]);
-        header("location: ../profile.php?date_change_successfull");
+        header("location: ../profile.php");
     } else {
         header("location: ../profile.php?error=empty_date_field");
     }

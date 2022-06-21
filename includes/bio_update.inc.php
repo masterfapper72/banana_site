@@ -9,7 +9,6 @@ $txtValue = $_POST["bio-txt"];
 
 if (isset($_POST["submit"])) {
     if (!empty($txtValue)) {
-        createBioTable($conn, $_SESSION["username"]);
         updateBio($conn, $txtValue, $_SESSION["username"]);
         header("location: ../profile.php");
     } else {

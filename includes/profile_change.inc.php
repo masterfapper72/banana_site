@@ -25,7 +25,7 @@ if (in_array($fileRealExt, $allowedExt)) {
             $fileDestinationPath = "../assets/uploads/" . $newFileName;
             move_uploaded_file($fileTempName, $fileDestinationPath);
             updateProfileImgStatus($conn, $_SESSION["username"]);
-            header("location: ../profile.php?upload_success");
+            header("location: ../profile.php");
         } else {
             header("location: ../index.php?error=file_too_large");
         }
@@ -33,5 +33,5 @@ if (in_array($fileRealExt, $allowedExt)) {
         header("location: ../index.php?error=something_went_wrong");
 }
     } else {
-        header("location: ../index.php?error=extension_not_allowed");
+        header("location: ../index.php?error=invalid_file_extension");
 }

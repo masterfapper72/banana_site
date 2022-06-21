@@ -75,6 +75,67 @@
         <button class="edit-pop-txt-btn" type="submit" name="submit">Submit</button>
     </form>
 </div>
+<!-- Error messages -->
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "empty_bio") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>Empty Bio</p>
+            </div>
+<?php }
+}
+?>
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "bad_access") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>Nope!</p>
+            </div>
+<?php }
+}
+?>
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "file_too_large") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>File is too large!</p>
+            </div>
+<?php }
+}
+?>
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "invalid_file_extension") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>Invalid File Extension!</p>
+            </div>
+<?php }
+}
+?>
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "something_went_wrong") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>Something went wrong! Contact support.</p>
+            </div>
+<?php }
+}
+?>
+<?php 
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "empty_date_field") { ?>
+        <div id="error-box" class="error-box">
+            <img src="assets/img/close.png" onclick="document.getElementById('error-box').style.display = 'none'">
+            <p>Empty date field!</p>
+            </div>
+<?php }
+}
+?>
 
 <?php mysqli_close($conn); ?>
 <?php include_once "modules/footer.php"; ?>

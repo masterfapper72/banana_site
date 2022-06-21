@@ -147,13 +147,14 @@ a {
   width: 30%;
   left: 30%;
   top: 25%;
-  background-color: red;
+  background-color: brown;
   color: white;
   padding: 1em 2em 1em 2em;
   text-align: center;
-  border: 2px solid yellow;
+  border: 3px solid gold;
   font-size: 2em;
   font-weight: bold;
+  z-index: 30;
 }
 .error-box img {
   position: absolute;
