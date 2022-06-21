@@ -259,8 +259,6 @@ a {
   left: 3%;
   font-size: 1.6em;
   float: left;
-  font-weight: 600;
-  text-shadow: 0.3px 00 white;
 }
 .profile-birth {
   position: relative;
@@ -382,11 +380,11 @@ h2.sett-3 {
 .bio-sett-pop {
   display: none;
   position: absolute;
-  top: 35%;
+  top: 25%;
   left: 24%;
   background-color: gold;
   width: 50%;
-  height: 23em;
+  height: 30em;
   border: 5px solid goldenrod;
   text-align: center;
   z-index: 16;
@@ -397,12 +395,10 @@ h2.sett-3 {
 .edit-pop-txt {
   position: relative;
   width: 70%;
-  height: 17em;
-  font-weight: 500;
+  height: 15em;
   font-size: 12pt;
 }
 .edit-pop-txt-btn {
-  margin-top: 2%;
   width: 10%;
   height: 2.2em;
   background-color: goldenrod;

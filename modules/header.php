@@ -13,6 +13,15 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/app.css" />
+    <script src="https://cdn.tiny.cloud/1/4fs1imtw099adg1x5hjv9ug71659w0uxts4fuvdpvrd3j15j/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({selector: '#pop_txt',
+                    resize: false,
+                    menubar: false,
+                    plugins: "code",
+                    toolbar: "bold italic code"
+                    });
+    </script>
   </head>
   <body>
     <div class="logo-container">
