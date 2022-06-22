@@ -5,6 +5,7 @@ var spopup = document.getElementById("signup-popup");
 var settpopup = document.getElementById("p_settings");
 var editPop = document.getElementById("ed_pop");
 var editPop2 = document.getElementById("ed_pop_2");
+var newPostPop = document.getElementById("new_post_pop");
 
 function openLogin() {
     lbg.style.display = "block";
@@ -42,4 +43,14 @@ function editPopup() {
 function closeEditPopup() {
     editPop.style.display = "none";
     editPop2.style.display = "none";
+}
+
+function openNewPostPop() {
+    editPop.style.display = "block";
+    newPostPop.style.display = "block";
+}
+
+function closeNewPostPop() {
+    editPop.style.display = "none";
+    newPostPop.style.display = "none";
 }

@@ -7,6 +7,9 @@ html {
 body {
   background: linear-gradient(brown, gold);
 }
+body, input, textarea, button {
+  font-family: 'Brush Script MT', cursive;
+}
 .logo-container {
   position: absolute;
   left: 5%;
@@ -407,4 +410,59 @@ h2.sett-3 {
   border: 1px solid #999;
   font-weight: 700;
   font-size: 10pt;
+}
+.new-post-btn {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 5%;
+  width: 8%;
+  height: 2.5em;
+  background-color: gold;
+  border: 3px solid goldenrod;
+  font-size: 15pt;
+  cursor: pointer;
+}
+.new-post-btn:hover {
+  opacity: 0.9;
+}
+.create-post-popup {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 24%;
+  width: 50%;
+  height: 70%;
+  background-color: gold;
+  border: 5px solid goldenrod;
+  z-index: 16;
+}
+.create-post-title {
+  position: relative;
+  top: 2%;
+  left: 2%;
+  font-size: 18pt;
+}
+.sep-1 {
+  position: relative;
+  top: 5%;
+  border: 2px solid goldenrod;
+}
+.new-post-form {
+  position: relative;
+  top: 10%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.new-post-pub-btn {
+  position: relative;
+  text-align: center;
+  margin-top: 5%;
+  float: right;
+  width: 12%;
+  height: 2em;
+  background-color: goldenrod;
+  border: 1px solid gray;
+  font-size: 15pt;
+  cursor: pointer;
 }

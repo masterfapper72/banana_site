@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="assets/css/app.css" />
     <script src="https://cdn.tiny.cloud/1/4fs1imtw099adg1x5hjv9ug71659w0uxts4fuvdpvrd3j15j/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-      tinymce.init({selector: '#pop_txt',
+      tinymce.init({selector: 'textarea',
                     resize: false,
                     menubar: false,
-                    plugins: "code",
-                    toolbar: "bold italic code"
+                    plugins: "code emoticons image link",
+                    toolbar: "bold italic emoticons link image code",
+                    images_upload_url: 'postAcceptor.php',
+                    automatic_uploads: false
                     });
     </script>
   </head>
@@ -46,11 +48,8 @@
           ><p>Profile</p></a>
           <?php
         } ?>
-      <a class="menu-item color-white" href="contact.php" title="contacts"
-        ><p>Contacts</p></a
-      >
-      <a class="menu-item color-white" href="who.php" title="about the community"
-        ><p>About Us</p></a
+      <a class="menu-item color-white" href="posts.php" title="contacts"
+        ><p>Posts</p></a
       >
       <a class="menu-item color-white" href="index.php" title="Main Page"><p>Home</p></a>
     </div>
