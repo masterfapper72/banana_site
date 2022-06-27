@@ -8,9 +8,15 @@
     <h2 class="create-post-title">CREATE NEW POST</h2>
     <hr class="sep-1">
     <form class="new-post-form" action="includes/handle_new_post.inc.php" method="POST" enctype="multipart/form-data">
-        <textarea class="new-post-txt"></textarea>
+        <input class="new-post-title" type="text" name="new_post_title" placeholder="POST TITLE...">
+        <br>
+        <br>
+        <textarea class="new-post-txt" name="new_post_content"></textarea> 
         <button type="submit" name="submit" class="new-post-pub-btn">Publish</button>
     </form>
+</div>
+<div class="user-posts">
+    <?php getPostContent($conn); ?>
 </div>
 
 <?php mysqli_close($conn); ?>

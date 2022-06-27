@@ -205,3 +205,39 @@ function bioStatus($conn, $user) {
         return false;
     }
 }
+
+//Create posts table
+function createPostTable($conn) {
+    $sql = "CREATE TABLE IF NOT EXISTS userPosts (
+            id INT(11) PRIMARY KEY AUTO_INCREMENT NOT null,
+            postAuthor VARCHAR(128) NOT null,
+            postDate VARCHAR(128) NOT null,
+            postContent LONGTEXT NOT null,
+            postTitle VARCHAR(128) NOT null
+            );";
+    mysqli_query($conn, $sql);
+}
+
+//Insert users new post data into table
+function addNewPost($conn, $postContent, $postTitle, $user) {
+    $sql = "INSERT INTO userPosts (PostAuthor, postDate, postContent, postTitle) VALUES (?, ?, ?, ?);";
+    $currentDate = date("Y/m/d");
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../posts.php?error=stmt_failed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ssss", $user, $currentDate, $postContent, $postTitle);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+//Get user post from DB
+function getPostContent($conn) {
+    $sql = "SELECT * FROM userPosts WHERE postdate != '0000/00/00' ORDER BY postDate DESC;";
+    $query = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($query)) {
+        echo "<h2>" . $row["postTitle"] . "</h2><br>";
+        echo $row["postContent"] . "<br>";
+    }
+}
