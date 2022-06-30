@@ -15,8 +15,21 @@
         <button type="submit" name="submit" class="new-post-pub-btn">Publish</button>
     </form>
 </div>
+<div id="ed_pop_3" class="bio-sett-pop-bg" onclick="closeDeletePostPop()"></div>
+<div id="delete_post" class="delete-post-popup">
+    <div class="delete-post-content">
+        <h3>Are you sure you want to delete this post?</h3>
+        <br>
+        <form action="includes/delete_post.inc.php" method="POST">
+            <button id="yes_btn" class="delete-post-btn" type="submit" name="yes_del_btn" onclick="document.getElementById('yes_btn').value = globalThis.postId">Yes</button>
+            <button class="delete-post-btn">No</button>
+        </form>
+    </div>
+</div>
 <div class="user-posts">
-    <?php getPostContent($conn); ?>
+    <table>
+        <?php getPostContent($conn); ?>
+    </table>
 </div>
 
 <?php mysqli_close($conn); ?>

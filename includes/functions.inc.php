@@ -237,7 +237,26 @@ function getPostContent($conn) {
     $sql = "SELECT * FROM userPosts WHERE postdate != '0000/00/00' ORDER BY postDate DESC;";
     $query = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($query)) {
-        echo "<h2>" . $row["postTitle"] . "</h2><br>";
-        echo $row["postContent"] . "<br>";
+        echo "<tr>" . $row["postAuthor"] . " - ". $row["postDate"] . "</tr>";
+        echo "<tr><h2>" . $row["postTitle"] . "</h2><br>";
+        echo $row["postContent"] . "<br></tr>";
+        echo "<tr><button class='alter-post-btn' onclick='openEditPostPop()'>Edit</button>
+            <button id='" . $row["id"] . "'class='alter-post-btn' onclick='openDeletePostPop(); globalThis.postId = this.id;'>Delete</button><br><br><hr class='sep-2'><br></tr>";
+    }
+}
+
+//Delete user post
+function deletePost($conn, $user, $postId) {
+    $sql1 = "SELECT * FROM userPosts WHERE id = '" . $postId . "';";
+    $sql2 = "DELETE FROM userPosts WHERE id = '" . $postId . "';";
+    $query = mysqli_query($conn, $sql1);
+    while ($row = mysqli_fetch_assoc($query)) {
+        if ($row["postAuthor"] == $user) {
+            mysqli_query($conn, $sql2);
+            header("location: ../posts.php");
+        } else {
+            header("location: ../posts.php?error=it's_not_your_post");
+            exit();
+        }
     }
 }
