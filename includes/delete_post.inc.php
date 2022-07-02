@@ -9,7 +9,11 @@ $postId = $_POST["yes_del_btn"];
 
 if (isset($_POST["yes_del_btn"])) {
     deletePost($conn, $_SESSION["username"], $postId);
-} else {
+}
+elseif (isset($_POST["no_delete_btn"])) {
     header("location: ../posts.php");
+    exit();
+} else {
+    header("location: ../posts.php?error=bad_access");
     exit();
 }

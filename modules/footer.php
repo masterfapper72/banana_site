@@ -1,6 +1,8 @@
-<div id="footer">
-<p>Banana.com All rights reserved. Copyright 2021 - 2022</p>
-</div>
+<footer>
+    <div id="footer">
+    <p>Banana.com All rights reserved. Copyright 2021 - 2022</p>
+    </div>
+</footer>
 
 <script>
     function changeProfileImg() {

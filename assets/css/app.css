@@ -532,3 +532,37 @@ h2.sett-3 {
 .delete-post-btn:hover {
   opacity: 0.9;
 }
+.edit-post-popup {
+  display: none;
+  position: absolute;
+  width: 50%;
+  height: 55%;
+  top: 20%;
+  left: 24%;
+  padding-left: 1%;
+  padding-right: 1%;
+  text-align: center;
+  background-color: goldenrod;
+  border: 4px solid gold;
+  z-index: 30;
+}
+.edit-post-content {
+  position: relative;
+  margin-top: 2%;
+}
+.edit-post-btn {
+  position: relative;
+  text-align: center;
+  width: 9%;
+  margin-top: 1%;
+  margin-left: 1%;
+  float: right;
+  height: 2.2em;
+  background-color: gold;
+  border: 1px solid gray;
+  font-size: 10pt;
+  cursor: pointer;
+}
+.edit-post-btn:hover {
+  opacity: 0.9;
+}

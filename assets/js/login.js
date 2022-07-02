@@ -6,8 +6,10 @@ var settpopup = document.getElementById("p_settings");
 var editPop = document.getElementById("ed_pop");
 var editPop2 = document.getElementById("ed_pop_2");
 var editPop3 = document.getElementById("ed_pop_3");
+var editPop4 = document.getElementById("ed_pop_4");
 var newPostPop = document.getElementById("new_post_pop");
 var deletePost = document.getElementById("delete_post");
+var editPost = document.getElementById("edit_post");
 
 function openLogin() {
     lbg.style.display = "block";
@@ -68,9 +70,11 @@ function closeDeletePostPop() {
 }
 
 function openEditPostPop() {
-    editPop.style.display = "block";
+    editPop4.style.display = "block";
+    editPost.style.display = "block";
 }
 
 function closeEditPostPop() {
-    editPop.style.display = "none";
+    editPop4.style.display = "none";
+    editPost.style.display = "none";
 }

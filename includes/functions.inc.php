@@ -239,9 +239,10 @@ function getPostContent($conn) {
     while($row = mysqli_fetch_assoc($query)) {
         echo "<tr>" . $row["postAuthor"] . " - ". $row["postDate"] . "</tr>";
         echo "<tr><h2>" . $row["postTitle"] . "</h2><br>";
-        echo $row["postContent"] . "<br></tr>";
-        echo "<tr><button class='alter-post-btn' onclick='openEditPostPop()'>Edit</button>
-            <button id='" . $row["id"] . "'class='alter-post-btn' onclick='openDeletePostPop(); globalThis.postId = this.id;'>Delete</button><br><br><hr class='sep-2'><br></tr>";
+        echo "<div id='" . $row['id'] . "content'>" . $row["postContent"] . "<br></tr>";
+        echo "<tr><button id='" . $row["id"] . "' class='alter-post-btn' 
+        onclick='openEditPostPop(); tinyMCE.get(`post_edit`).setContent(document.getElementById(`" . $row['id'] . "content`).innerHTML); globalThis.postId = this.id;'>Edit</button>
+        <button id='" . $row["id"] . "' class='alter-post-btn' onclick='openDeletePostPop(); globalThis.postId = this.id;'>Delete</button><br><br><hr class='sep-2'><br></tr>";
     }
 }
 
@@ -258,5 +259,19 @@ function deletePost($conn, $user, $postId) {
             header("location: ../posts.php?error=it's_not_your_post");
             exit();
         }
+    }
+}
+
+//Edit user post
+function editPost($conn, $user, $postId, $updateContent) {
+    $sql1 = "UPDATE userPosts SET postContent = '" . $updateContent . "' WHERE id = '" . $postId . "';";
+    $sql2 = "SELECT postAuthor FROM userPosts WHERE id = '" . $postId . "';";
+    $query = mysqli_query($conn, $sql2);
+    if ($user == mysqli_fetch_assoc($query)["postAuthor"]) {
+        mysqli_query($conn, $sql1);
+        header("location: ../posts.php");
+    } else {
+        header("location: ../posts.php?error=it's_not_your_post");
+        exit();
     }
 }
