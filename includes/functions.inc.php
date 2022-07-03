@@ -264,11 +264,18 @@ function deletePost($conn, $user, $postId) {
 
 //Edit user post
 function editPost($conn, $user, $postId, $updateContent) {
-    $sql1 = "UPDATE userPosts SET postContent = '" . $updateContent . "' WHERE id = '" . $postId . "';";
+    $sql1 = "UPDATE userPosts SET postContent = ? WHERE id = ?;";
     $sql2 = "SELECT postAuthor FROM userPosts WHERE id = '" . $postId . "';";
     $query = mysqli_query($conn, $sql2);
     if ($user == mysqli_fetch_assoc($query)["postAuthor"]) {
-        mysqli_query($conn, $sql1);
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql1)) {
+            header("location: ../posts.php?error=stmt_failed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "ss", $updateContent, $postId);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
         header("location: ../posts.php");
     } else {
         header("location: ../posts.php?error=it's_not_your_post");
